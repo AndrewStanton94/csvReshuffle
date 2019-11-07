@@ -1,0 +1,19 @@
+{
+	"name": "csv-reshuffle",
+	"version": "1.0.0",
+	"description": "A browser based tool to reorder the columns in a CSV file",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/AndrewStanton94/csvReshuffle.git"
+	},
+	"author": "Andrew Stanton",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/AndrewStanton94/csvReshuffle/issues"
+	},
+	"homepage": "https://github.com/AndrewStanton94/csvReshuffle#readme"
+}
