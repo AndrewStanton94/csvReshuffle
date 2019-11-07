@@ -4,7 +4,8 @@
 	"description": "A browser based tool to reorder the columns in a CSV file",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "parcel index.html"
 	},
 	"repository": {
 		"type": "git",
@@ -15,5 +16,16 @@
 	"bugs": {
 		"url": "https://github.com/AndrewStanton94/csvReshuffle/issues"
 	},
-	"homepage": "https://github.com/AndrewStanton94/csvReshuffle#readme"
+	"homepage": "https://github.com/AndrewStanton94/csvReshuffle#readme",
+	"devDependencies": {
+		"@babel/core": "^7.7.2",
+		"@vue/component-compiler-utils": "^3.0.2",
+		"parcel-bundler": "^1.12.4",
+		"vue-template-compiler": "^2.6.10"
+	},
+	"dependencies": {
+		"csv": "^5.1.3",
+		"vue": "^2.6.10",
+		"vue-hot-reload-api": "^2.3.4"
+	}
 }
