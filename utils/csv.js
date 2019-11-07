@@ -1,4 +1,4 @@
-import parse from 'csv-parse/lib/sync';
+import Papa from 'papaparse';
 
 // export function csvToJSON(csv) {
 // 	const allTextLines = csv.split(/\r\n|\n/);
@@ -16,23 +16,9 @@ import parse from 'csv-parse/lib/sync';
 // }
 
 export function csvToJSON(csv) {
-	console.log(typeof csv);
-	document.input = csv;
-	document.parse = parse;
+	console.log('csv: ', csv);
+	let { data } = Papa.parse(csv, { skipEmptyLines: true });
+	console.log(data);
 
-	// A hack to get the observer filth off the object
-	let input = JSON.parse(JSON.stringify(csv));
-	console.log(input);
-
-	const records = parse(input, {
-		columns: true,
-		skip_empty_lines: true,
-	});
-	console.log(typeof records);
-
-	let output = Object.assign({}, records);
-	output = output.map((line) => Object.assign({}, line));
-	console.log(output);
-	document.records = output;
-	return output;
+	return data;
 }

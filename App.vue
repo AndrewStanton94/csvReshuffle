@@ -1,7 +1,6 @@
 <template>
 	<main>
 		<h1 class="container">Hello {{bundler}}</h1>
-		<p>{{files}}</p>
 		<input type="file" id="csvFileInput" ref="myFiles" @change="processFile" accept=".csv" />
 
 		<section v-if="dataHeaders.length">
@@ -35,6 +34,10 @@ export default Vue.extend({
 			reader.onload = (event) => {
 				var csv = event.target.result;
 				this.fileData = csvToJSON(csv);
+
+				this.fileData.forEach((e, i) => {
+					console.log('row', i, e);
+				});
 			};
 			reader.onerror = (evt) => {
 				if (evt.target.error.name == 'NotReadableError') {
