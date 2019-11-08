@@ -24,6 +24,7 @@
 		"vue-template-compiler": "^2.6.10"
 	},
 	"dependencies": {
+		"file-saver": "^2.0.2",
 		"papaparse": "^5.1.0",
 		"vue": "^2.6.10",
 		"vue-hot-reload-api": "^2.3.4"

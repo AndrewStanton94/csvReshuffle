@@ -16,7 +16,9 @@
 <script>
 import Vue from 'vue';
 import { csvToJSON, jsonToCSV } from './utils/csv';
+import orderedLists from './utils/orderedLists';
 import listsToObjects from './utils/listsToObjects';
+import saveFile from './utils/saveFile';
 
 export default Vue.extend({
 	data() {
@@ -49,12 +51,19 @@ export default Vue.extend({
 			};
 		},
 		reshuffle() {
-			console.log(listsToObjects);
-
 			document.obj = listsToObjects(
 				this.dataHeaders,
 				this.fileData.slice(1)
 			);
+
+			const curatedData = orderedLists(
+				document.obj,
+				this.dataHeaders.reverse()
+			);
+			console.log('curatedData: ', curatedData);
+
+			const csvOut = jsonToCSV(curatedData);
+			saveFile(csvOut, 'export.csv');
 		},
 	},
 	computed: {
