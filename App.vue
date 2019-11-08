@@ -15,8 +15,7 @@
 
 <script>
 import Vue from 'vue';
-import { csvToJSON } from './utils/csv';
-import './utils/listsToObjects';
+import { csvToJSON, jsonToCSV } from './utils/csv';
 import listsToObjects from './utils/listsToObjects';
 
 export default Vue.extend({

@@ -22,3 +22,11 @@ export function csvToJSON(csv) {
 
 	return data;
 }
+
+export function jsonToCSV(json) {
+	console.log('json:', json);
+	let data = Papa.unparse(json);
+	console.log('data:', data);
+
+	return data;
+}
