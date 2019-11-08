@@ -8,6 +8,7 @@
 			<ul>
 				<li v-for="header in dataHeaders" :key="header">{{header}}</li>
 			</ul>
+			<button @click="reshuffle">reshuffle</button>
 		</section>
 	</main>
 </template>
@@ -15,6 +16,8 @@
 <script>
 import Vue from 'vue';
 import { csvToJSON } from './utils/csv';
+import './utils/listsToObjects';
+import listsToObjects from './utils/listsToObjects';
 
 export default Vue.extend({
 	data() {
@@ -34,6 +37,7 @@ export default Vue.extend({
 			reader.onload = (event) => {
 				var csv = event.target.result;
 				this.fileData = csvToJSON(csv);
+				document.csv = this.fileData;
 
 				this.fileData.forEach((e, i) => {
 					console.log('row', i, e);
@@ -45,9 +49,18 @@ export default Vue.extend({
 				}
 			};
 		},
+		reshuffle() {
+			console.log(listsToObjects);
+
+			document.obj = listsToObjects(
+				this.dataHeaders,
+				this.fileData.slice(1)
+			);
+		},
 	},
 	computed: {
 		dataHeaders() {
+			document.dataHeaders = this.fileData[0] || [];
 			return this.fileData[0] || [];
 		},
 	},
