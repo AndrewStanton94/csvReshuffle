@@ -15,10 +15,10 @@
 
 <script>
 import Vue from 'vue';
-import { csvToJSON, jsonToCSV } from './utils/csv';
-import orderedLists from './utils/orderedLists';
-import listsToObjects from './utils/listsToObjects';
-import saveFile from './utils/saveFile';
+import { csvToJSON, jsonToCSV } from '../utils/csv';
+import orderedLists from '../utils/orderedLists';
+import listsToObjects from '../utils/listsToObjects';
+import saveFile from '../utils/saveFile';
 
 export default Vue.extend({
 	data() {
