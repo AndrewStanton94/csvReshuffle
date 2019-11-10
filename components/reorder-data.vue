@@ -1,6 +1,19 @@
 <template>
 	<section>
 		<h2>Headers</h2>
+		<sortablejs-draggable
+			v-model="value.headers"
+			@start="drag=true"
+			@end="drag=false"
+		>
+			<div
+				v-for="element in value.headers"
+				:key="element"
+			>
+				{{ element }}
+			</div>
+		</sortablejs-draggable>
+
 		<ul>
 			<li
 				v-for="header in value.headers"
