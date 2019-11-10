@@ -1,13 +1,21 @@
 <template>
-	<section>
-		<h1>This is a csv-input component {{ message }} {{ aProp }}</h1>
-		<input
-			id="csvFileInput"
-			ref="myFiles"
-			type="file"
-			accept=".csv"
-			@change="processFile"
-		>
+	<section class="container">
+		<h2 class="title">
+			CSV Upload
+		</h2>
+		<p class="subtitle">
+			Your data will be processed in your browser. It will not be sent to any servers.
+		</p>
+		<form class="form">
+			<input
+				id="csvFileInput"
+				ref="myFiles"
+				class="input is-primary"
+				type="file"
+				accept=".csv"
+				@change="processFile"
+			>
+		</form>
 	</section>
 </template>
 
@@ -16,12 +24,6 @@ import { csvToJSON } from '../utils/csv';
 import listsToObjects from '../utils/listsToObjects';
 
 export default {
-	props: ['aProp'],
-	data() {
-		return {
-			message: 'Yo',
-		};
-	},
 	methods: {
 		processFile() {
 			// $refs gives a direct link to the element
@@ -56,9 +58,6 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-	background-color: blueviolet;
-}
 section {
 	border: red solid 5px;
 }

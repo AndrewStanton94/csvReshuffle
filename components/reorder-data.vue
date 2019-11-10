@@ -1,6 +1,11 @@
 <template>
-	<section>
-		<h2>Headers</h2>
+	<section class="container">
+		<h2 class="title">
+			Reorder the columns
+		</h2>
+		<p class="subtitle">
+			The column headers are shown below. You can drag and drop to reorder them.
+		</p>
 		<sortablejs-draggable
 			v-model="value.headers"
 			@start="drag=true"
@@ -9,6 +14,7 @@
 			<div
 				v-for="element in value.headers"
 				:key="element"
+				class="box"
 			>
 				{{ element }}
 			</div>
@@ -22,9 +28,14 @@
 				{{ header }}
 			</li>
 		</ul>
-		<button @click="reshuffle">
-			reshuffle
-		</button>
+		<form class="form">
+			<button
+				class="button is-primary"
+				@click="reshuffle"
+			>
+				reshuffle
+			</button>
+		</form>
 	</section>
 </template>
 

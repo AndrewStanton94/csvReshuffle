@@ -3,16 +3,18 @@
 	<main>
 		<csv-input
 			v-model="tabularData"
-			a-prop="does this thing work?"
+			class="section"
 		></csv-input>
 
 		<p>{{ tabularData }}</p>
 
 		<reorder-data
 			v-model="tabularData"
+			class="section"
 		></reorder-data>
 
 		<save-csv
+			class="section"
 			:tabular-data="tabularData"
 		></save-csv>
 	</main>

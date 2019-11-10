@@ -1,15 +1,24 @@
 <template>
-	<section>
-		<label>
-			Export filename:
-			<input
-				v-model="fileName"
-				type="text"
+	<section class="container">
+		<h2 class="title">
+			Export updated file
+		</h2>
+		<form class="form">
+			<label class="label">
+				Export filename:
+				<input
+					v-model="fileName"
+					class="input"
+					type="text"
+				>
+			</label>
+			<button
+				class="button is-primary"
+				@click="save"
 			>
-		</label>
-		<button @click="save">
-			Save {{ fullFileName }}
-		</button>
+				Save {{ fullFileName }}
+			</button>
+		</form>
 	</section>
 </template>
 
