@@ -28,27 +28,28 @@ export default {
 		processFile() {
 			// $refs gives a direct link to the element
 			const { files } = this.$refs.myFiles;
+			const reader = new FileReader();
 
-			var reader = new FileReader();
 			reader.readAsText(files[0]);
 			reader.onload = (event) => {
+				// CSV converted to a list of lists
 				const [headers, ...dataAsLists] = csvToJSON(
 					event.target.result
 				);
 
+				// convert to a list of objects
+				// Named attributes will be easier to work with
 				const dataAsObjects = listsToObjects(headers, dataAsLists);
 
-				const processedCSV = {
-					headers,
-					data: dataAsObjects,
-				};
-
-				console.log('processedCSV: ', processedCSV);
-
-				this.$emit('input', processedCSV);
+				this.$emit('input',
+					{
+						headers,
+						data: dataAsObjects,
+					}
+				);
 			};
 			reader.onerror = (evt) => {
-				if (evt.target.error.name == 'NotReadableError') {
+				if (evt.target.error.name === 'NotReadableError') {
 					alert('Canno\'t read file !');
 				}
 			};

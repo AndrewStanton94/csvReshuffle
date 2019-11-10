@@ -14,9 +14,9 @@
 			</label>
 			<button
 				class="button is-primary"
-				@click="save"
+				@click.prevent="save"
 			>
-				Save {{ fullFileName }}
+				<span class="content">Save as <strong> {{ fullFileName }} </strong></span>
 			</button>
 		</form>
 	</section>
@@ -27,7 +27,12 @@ import { jsonToCSV } from '../utils/csv';
 import saveFile from '../utils/saveFile';
 
 export default {
-	props: ['tabularData'],
+	props: {
+		dataSorted: {
+			required: true,
+			type: Array
+		}
+	},
 	data() {
 		return {
 			fileName: 'export',
@@ -44,9 +49,7 @@ export default {
 	},
 	methods: {
 		save() {
-			console.log('tabularData: ', this.tabularData.data);
-
-			const csvOut = jsonToCSV(this.tabularData.data);
+			const csvOut = jsonToCSV(this.dataSorted);
 			saveFile(csvOut, this.fullFileName);
 		},
 	},

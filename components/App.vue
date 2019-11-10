@@ -2,21 +2,34 @@
 <template>
 	<main>
 		<csv-input
-			v-model="tabularData"
+			v-model="dataReceived"
 			class="section"
 		></csv-input>
 
-		<p>{{ tabularData }}</p>
+		<section class="dev">
+			{{ dataReceived }}
+		</section>
 
-		<reorder-data
-			v-model="tabularData"
-			class="section"
-		></reorder-data>
+		<transition name="fade">
+			<reorder-data
+				v-if="dataReceived.headers.length"
+				v-model="dataSorted"
+				:data-received="dataReceived"
+				class="section"
+			></reorder-data>
+		</transition>
 
-		<save-csv
-			class="section"
-			:tabular-data="tabularData"
-		></save-csv>
+		<section class="dev">
+			{{ dataSorted }}
+		</section>
+
+		<transition name="fade">
+			<save-csv
+				v-if="dataSorted.length"
+				class="section"
+				:data-sorted="dataSorted"
+			></save-csv>
+		</transition>
 	</main>
 </template>
 
@@ -26,10 +39,11 @@ import Vue from 'vue';
 export default Vue.extend({
 	data() {
 		return {
-			tabularData: {
-				headers: ['a', 'b'],
+			dataReceived: {
+				headers: [],
 				data: [],
 			},
+			dataSorted: [],
 		};
 	},
 });
@@ -38,5 +52,17 @@ export default Vue.extend({
 <style scoped>
 .container {
 	color: green;
+}
+
+.dev {
+	display: none;
+}
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 2.5s;
+}
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
 }
 </style>

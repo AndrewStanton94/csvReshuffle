@@ -7,12 +7,12 @@
 			The column headers are shown below. You can drag and drop to reorder them.
 		</p>
 		<sortablejs-draggable
-			v-model="value.headers"
+			v-model="dataReceived.headers"
 			@start="drag=true"
 			@end="drag=false"
 		>
 			<div
-				v-for="element in value.headers"
+				v-for="element in dataReceived.headers"
 				:key="element"
 				class="box"
 			>
@@ -20,20 +20,12 @@
 			</div>
 		</sortablejs-draggable>
 
-		<ul>
-			<li
-				v-for="header in value.headers"
-				:key="header"
-			>
-				{{ header }}
-			</li>
-		</ul>
 		<form class="form">
 			<button
 				class="button is-primary"
-				@click="reshuffle"
+				@click.prevent="reshuffle"
 			>
-				reshuffle
+				Reorder data
 			</button>
 		</form>
 	</section>
@@ -43,23 +35,22 @@
 import orderedLists from '../utils/orderedLists';
 export default {
 	props: {
-		value: {
-			type: Object,
+		dataReceived: {
 			required: true,
+			type: Object
 		},
-	},
-	data() {
-		return {};
+		value: {
+			type: Array,
+			required: true
+		},
 	},
 	methods: {
 		reshuffle() {
-			console.log('preReshuffle: ', this.value);
-			const curatedData = orderedLists(
-				this.value.data,
-				this.value.headers.reverse()
+			const sortedData = orderedLists(
+				this.dataReceived.data,
+				this.dataReceived.headers
 			);
-			this.value.data = curatedData;
-			console.log('curatedData: ', curatedData);
+			this.$emit('input', sortedData);
 		},
 	},
 };
