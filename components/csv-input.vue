@@ -59,7 +59,4 @@ export default {
 </script>
 
 <style scoped>
-section {
-	border: red solid 5px;
-}
 </style>
