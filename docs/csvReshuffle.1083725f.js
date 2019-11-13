@@ -36,4 +36,4 @@ var e,t=arguments[3];!function(t,o){"function"==typeof e&&e.amd?e([],o):"undefin
 },{"../utils/csv":"Mk2W","../utils/saveFile":"xJjh"}],"Focm":[function(require,module,exports) {
 "use strict";var e=o(require("vue")),t=o(require("vuedraggable")),r=o(require("./components/App.vue")),u=o(require("./components/csv-input")),n=o(require("./components/reorder-data")),a=o(require("./components/save-csv"));function o(e){return e&&e.__esModule?e:{default:e}}e.default.component("sortablejs-draggable",t.default),e.default.component("csv-input",u.default),e.default.component("reorder-data",n.default),e.default.component("save-csv",a.default),new e.default({render:function(e){return e(r.default)}}).$mount("#app");
 },{"vue":"NtAQ","vuedraggable":"Rjvu","./components/App.vue":"TC2m","./components/csv-input":"gp3b","./components/reorder-data":"VMV4","./components/save-csv":"Np1A"}]},{},["Focm"], null)
-//# sourceMappingURL=csvReshuffle/csvReshuffle.1083725f.js.map
+//# sourceMappingURL=csvReshuffle.1083725f.js.map
